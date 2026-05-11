@@ -14,15 +14,15 @@ type KeyData struct {
 }
 
 type KeyList struct {
-	Key0      KeyData `xml:"Key0,omitempty"`
-	Key1      KeyData `xml:"Key1,omitempty"`
-	Key2      KeyData `xml:"Key2,omitempty"`
-	Key3      KeyData `xml:"Key3,omitempty"`
-	Key4      KeyData `xml:"Key4,omitempty"`
-	Key5      KeyData `xml:"Key5,omitempty"`
-	Key6      KeyData `xml:"Key6,omitempty"`
 	ListName  string  `xml:"ListName"`
 	MaxNumber int     `xml:"MaxNumber"`
+	Key0      KeyData `xml:"Key0"`
+	Key1      KeyData `xml:"Key1"`
+	Key2      KeyData `xml:"Key2"`
+	Key3      KeyData `xml:"Key3"`
+	Key4      KeyData `xml:"Key4"`
+	Key5      KeyData `xml:"Key5"`
+	Key6      KeyData `xml:"Key6"`
 }
 
 func (receiver *KeyList) Set(i int, data *KeyData) {

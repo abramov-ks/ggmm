@@ -5,6 +5,7 @@ import (
 	list2 "ggmm/internal/command/info"
 	"ggmm/internal/command/list"
 	list3 "ggmm/internal/command/set"
+	"ggmm/internal/command/serve"
 	"ggmm/internal/ggmm/connection"
 	"os"
 )
@@ -40,6 +41,9 @@ func main() {
 	case "set":
 		cmd := list3.NewSet(connector)
 		cmd.Handle(tailArgs[1:])
+	case "serve":
+		cmd := serve.New(connector, *host)
+		cmd.Handle()
 	}
 
 }

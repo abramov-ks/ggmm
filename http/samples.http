@@ -1,0 +1,11 @@
+### Mute
+GET http://192.168.88.246/httpapi.asp?command=setPlayerCmd:mute
+Accept: application/json
+
+### Unmite
+GET http://192.168.88.246/httpapi.asp?command=setPlayerCmd:unmute
+Accept: application/json
+
+### Status
+GET http://192.168.88.246/httpapi.asp?command=getStatusEx
+Accept: application/json

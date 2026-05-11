@@ -60,24 +60,21 @@ func convertKeyListToXml(list *dto.KeyList) (string, error) {
 	if err != nil {
 		return "", err
 	}
-
-	return xml.Header + string(xmlData), nil
+	return string(xmlData), nil
 }
 
 func (l Service) SetStations(list *dto.KeyList) error {
+	list.MaxNumber = 6
 	action := "urn:schemas-wiimu-com:service:PlayQueue:1#SetKeyMapping"
 	keyListXml, err := convertKeyListToXml(list)
 	if err != nil {
 		return err
 	}
 	request := fmt.Sprintf(requestWrapper, "<u:SetKeyMapping xmlns:u=\"urn:schemas-wiimu-com:service:PlayQueue:1\"><QueueContext>"+html.EscapeString(keyListXml)+"</QueueContext></u:SetKeyMapping>")
-	resp, err := l.connector.Send(infoUri, action, request)
-
+	_, err = l.connector.Send(infoUri, action, request)
 	if err != nil {
 		return fmt.Errorf("send command error: %s", err)
 	}
-
-	fmt.Sprintf("%s", resp)
 	return nil
 }
 
